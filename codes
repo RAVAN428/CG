@@ -1,271 +1,8 @@
-1. DDA for a thin line.
-
-Program:
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<graphics.h>
-int main(void)
-{
-int gd=DETECT,gm;
-int i,x,y,x1,y1,x2,y2,dx,dy,length,xincr,yincr;
-printf("Enter the Starting co-ordinates of line");
-scanf("%d%d",&x1,&y1);
-printf("Enter the Ending co-ordinates of line");
-scanf("%d%d",&x2,&y2);
-initgraph(&gd,&gm," ");
-dx=abs(x2-x1);
-dy=abs(y2-y1); 
-length = dx>dy?dx:dy;
-xincr=dx/length;
-yincr=dy/length;
-putpixel(x1,y1,15);
-x=x1;
-y=y1;
-for(i=1;i<=length;i++)
-{
-x=x+xincr;
-y=y+yincr;
-putpixel(x,y,15);
-}
-getch();
-closegraph();
-return 0;
-}
-
-2. DDA for a dotted line.
-
-Program:
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<graphics.h>
-int main(void)
-{
-int gd=DETECT,gm;
-int i,x,y,x1,y1,x2,y2,dx,dy,length,xincr,yincr;
-printf("Enter the Starting co-ordinates of line");
-scanf("%d%d",&x1,&y1);
-printf("Enter the Ending co-ordinates of line");
-scanf("%d%d",&x2,&y2);
-initgraph(&gd,&gm," ");
-dx=abs(x2-x1);
-dy=abs(y2-y1);
-length = dx>dy?dx:dy;
-xincr=dx/length;
-yincr=dy/length;
-putpixel(x1,y1,15);
-x=x1;
-y=y1;
-for(i=1;i<=length;i++)
-{
-x=x+xincr;
-y=y+yincr;
-if(i%5==0)
-{
-continue;
-}
-else {
-putpixel(x,y,15);
-}
-}
-getch();
-delay(1000);
-closegraph();
-return 0;
-}
-
-3. DDA for a dashed line.
-
-Program:
-
+//TRANSLATION//
 #include<stdio.h>
 #include<graphics.h>
 #include<stdlib.h>
-#include<stdio.h>
-int main(void)
-{
-int gdriver = DETECT, gmode;
-int i,x,y,x1,y1,x2,y2,dx,dy,length,xincr,yincr;
-printf("Enter the starting coordinates of line");
-scanf("%d%d",&x1,&y1);
-printf("Enter the ending coordinates of line");
-scanf("%d%d",&x2,&y2);
-initgraph(&gdriver,&gmode, "");
-dx=abs(x2-x1);
-dy=abs(y2-y1);
-if(dx>dy)
-length=dx;
-else
-length=dy;
-xincr=dx/length;
-yincr=dy/length;
-putpixel(x1,y1,15);
-x=x1;
-y=y1;
-for(i=1;i<=length;i++)
-{
-x=x+xincr;
-y=y+yincr;
-putpixel(x,y,15);
-}
-getch();
-closegraph();
-return 0;
-}
-
-4. Bresenham's line drawing algorithm.
-
-Program: (For Thin LINE).
-
-#include<stdio.h>
-#include<graphics.h>
-#include<stdlib.h>
-#include<stdio.h> 
-int main(void)
-{
-int gdriver = DETECT, gmode;
-int i,x,y,x1,y1,x2,y2,dx,dy, length,xincr,yincr;
-printf("Enter the starting coordinates of line "); 
-scanf("%d %d",&x1,&y1); 
-printf("Enter the ending coordinates of line "); scanf("%d %d",&x2, &y2);
-initgraph(&gdriver,&gmode, "");
-dx-abs(x2-x1);
-dy=abs(y2-y1); 
-if(dx>dy)
-length=dx;
-else
-length=dy;
-xincr=dx/length; 
-yincr=dy/length; 
-putpixel(x1,y1,15);
-x=x1;
-y=y1;
-for(i=1;i<=length;i++)
-{
-x=x+xincr;
-y=y+yincr; 
-putpixel(x,y,15);
-}
-getch();
-closegraph();
-return 0;
-}
-
-(Extra 4. Bresenham's line drawing algorithm, Dotted Line)
-
-Program:
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<graphics.h>
-int main(void)
-{
-int gd=DETECT,gm;
-int i,x,y,x1,x2,y1,y2,dy,dx,length,P0;
-printf("enter the Starting Coordinates of line");
-scanf("%d%d",&x1,&y1);
-printf("enter the Ending Coordinates of line");
-scanf("%d%d",&x2,&y2);
-initgraph(&gd,&gm," ");
-dx=abs(x2-x1);
-dy=abs(y2-y1);
-lenght =(dx>dy)?dx:dy;
-putpixel(x1,y1,2);
-x=x1;
-y=y1;
-P0=2*dy-dx;
-for(i=1;i<=length;i++)
-{
-if(P0<0){
-x=x+1; y=y+0; 
-P0=P0+2*dy
-if(i%2==0){
-continue;
-}
-else{
-putpixel(x,y,2);
-}
-}
-else
-{
-P0=P0+2*dy-dx*2
-x=x+1; y=y+1; 
-if(i%2==0){
-continue;
-}
-else{
-putpixel(x,y,2);
-}
-}
-}
-getch();
-closegraph();
-return 0;
-}
-
-
-(Extra 4. Bresenham's line drawing algorithm, Dashed Line)
-
-Program:
-
-#include<stdio.h>
-#include<stdlib.h>
-#include<graphics.h>
-int main(void)
-{
-int gd=DETECT,gm;
-int i,x,y,x1,x2,y1,y2,dy,dx,length,P0;
-printf("enter the Starting Coordinates of line");
-scanf("%d%d",&x1,&y1);
-printf("enter the Ending Coordinates of line");
-scanf("%d%d",&x2,&y2);
-initgraph(&gd,&gm," ");
-dx=abs(x2-x1);
-dy=abs(y2-y1);
-lenght =(dx>dy)?dx:dy;
-putpixel(x1,y1,2);
-x=x1;
-y=y1;
-P0=2*dy-dx;
-for(i=1;i<=length;i++)
-{
-if(P0<0){
-x=x+1; y=y+0; 
-P0=P0+2*dy
-if(i%2==0){
-continue;
-}
-else{
-putpixel(x,y,2);
-}
-}
-else
-{
-P0=P0+2*dy-dx*2
-x=x+1; y=y+1; 
-if(i%7==0){
-continue;
-}
-else{
-putpixel(x,y,2);
-}
-}
-}
-getch();
-closegraph();
-return 0;
-}
-
-5. 2-D Translation.
-
-Program:
-
-#include<stdio.h>
-#include<graphics.h>
-#include<stdlib.h>
-void main()
-{
+int main(){
 int gm,gd=DETECT,x1,x2,x3,y1,y2,y3,nx1,nx2,nx3,ny1,ny2,ny3,xt,yt;
 printf("\t program for basic transaction");
 printf("\n\t Enter the Points of Triangle");
@@ -287,17 +24,15 @@ line(nx2,ny2,nx3,ny3);
 line(nx3,ny3,nx1,ny1);
 delay(50000);
 closegraph();
+return 0;
 }
 
-6. 2-D Rotation.
-
-Program:
-
+//ROTATION//
 #include<stdio.h>
 #include<graphics.h>
 #include<stdlib.h>
-void main()
-{
+#include<math.h>
+int main(){
 int gm,gd=DETECT,x1,x2,x3,y1,y2,y3,nx1,nx2,nx3,ny1,ny2,ny3,xt,yt,c,r;
 float t;
 printf("\t program for basic transaction");
@@ -321,17 +56,15 @@ line(nx2,ny2,nx3,ny3);
 line(nx3,ny3,nx1,ny1);
 delay(50000);
 closegraph();
+return 0;
 }
 
-7. 2-D Scaling.
 
-Program:
-
+//SCALING//
 #include<stdio.h>
 #include<graphics.h>
 #include<stdlib.h>
-void main()
-{
+int main(){
 int gm,gd=DETECT,x1,x2,x3,y1,y2,y3,nx1,nx2,nx3,ny1,ny2,ny3,xt,yt,c,r,sx,sy;
 float t;
 printf("\t program for basic transaction");
@@ -354,26 +87,24 @@ line(nx2,ny2,nx3,ny3);
 line(nx3,ny3,nx1,ny1);
 delay(50000);
 closegraph();
+return 0;
 }
 
-8.Flood fill.
-
-Program:
-
+//FLOOD FILL//
 #include<stdio.h>
 #include<graphics.h>
-//#include<dos.h>
-void floodFill(int x, int y,int oldcolor,int newcolor)
+void floodFill(int x,int y,int oldcolor,int newcolor)
 {
-if (getpixel(x, y)==oldcolor)
+if(getpixel(x,y) == oldcolor)
 {
 putpixel(x,y,newcolor);
 floodFill(x+1,y,oldcolor,newcolor);
 floodFill(x,y+1,oldcolor,newcolor);
 floodFill(x-1,y,oldcolor,newcolor);
-floodFill(x,y-1, oldcolor,newcolor);
+floodFill(x,y-1,oldcolor,newcolor);
 }
 }
+//getpixel(x,y) gives the color of specified pixel
 int main()
 {
 int gm,gd=DETECT,radius;
@@ -382,31 +113,29 @@ printf("Enter x and y positions for circle\n");
 scanf("%d%d",&x,&y);
 printf("Enter radius of circle\n");
 scanf("%d",&radius);
-initgraph (&gd,&gm,"c:\\turboc3\\bgi");
+initgraph(&gd,&gm,"c:\\turboc3\\bgi");
 circle(x,y,radius);
-floodFill(x,y,0,15);
+floodFill(x,y,0,14);
 delay(5000);
 closegraph();
 return 0;
 }
 
-9. Boundary fill.
-
-Program: 
-
+//BOUNDARY FILL//
 #include<stdio.h>
 #include<graphics.h>
-void boundaryfill(int x,int y,int fcolor,int bcolor)
+void boundaryfill(int x,int y,int f_color,int b_color)
 {
-if(getpixel(x,y)!=bcolor && getpixel(x,y)!=fcolor)
+if(getpixel(x,y)!=b_color && getpixel(x,y)!=f_color)
 {
-putpixel(x,y,fcolor);
-boundaryfill(x + 1,y,fcolor,bcolor);
-boundaryfill(x,y + 1,fcolor,bcolor);
-boundaryfill(x - 1,y,fcolor,bcolor);
-boundaryfill(x,y - 1,fcolor,bcolor);
+putpixel(x,y,f_color);
+boundaryfill(x+1,y,f_color,b_color);
+boundaryfill(x,y+1,f_color,b_color);
+boundaryfill(x-1,y,f_color,b_color);
+boundaryfill(x,y-1,f_color,b_color);
 }
 }
+//getpixel(x,y) gives the color of specified pixel
 int main()
 {
 int gm,gd=DETECT,radius;
@@ -415,7 +144,7 @@ printf("Enter x and y positions for circle\n");
 scanf("%d%d",&x,&y);
 printf("Enter radius of circle\n");
 scanf("%d",&radius);
-initgraph(&gd,&gm,"");
+initgraph(&gd,&gm,"c:\\turboc3\\bgi");
 circle(x,y,radius);
 boundaryfill(x,y,4,15);
 delay(5000);
@@ -423,44 +152,41 @@ closegraph();
 return 0;
 }
 
-10. Character generation to print initials of your name.
 
-Program: 
-
+//CHARACTER REGEN//
 #include<stdio.h>
 #include<graphics.h>
-void main()
+int main()
 {
-int gd=DETECT,gm,i,j;
+int gd=DETECT,gm, i,j;
 int a[20][20]=
 {
-{1,0,0,0,0,0,0,0,0,1,0,1,1,1,1,1,1,1,1,1},
-{1,1,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0},
-{1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0},
-{1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0},
-{1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0},
-{1,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0},
-{1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0},
-{1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0},
-{1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0},
-{1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0},
-};
-initgraph(&gd,&gm,"");
+{0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0},
+{0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0},
+{0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0},
+{0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0},
+{0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0},
+{0,0,1,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0},
+{0,0,1,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0},
+{0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0},
+{0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0},
+{0,0,1,1,1,1,1,1,1,1,0,0,1,0,0,0,0,1,0,0}};
+
+initgraph(&gd,&gm, "");
 for(i=0;i<19;i++)
 {
 for(j=0;j<19;j++)
 {
 if(a[i][j]==1)
-putpixel(200+j,200+i,WHITE);
+putpixel(200+j, 200+i, WHITE);
 }
 }
 getch();
+return 0;
 }
 
-11. Bezier Curve.
 
-Program: 
-
+//BEZIER//
 #include<stdio.h>
 #include<stdlib.h>
 #include<graphics.h>
@@ -485,295 +211,180 @@ getch();
 closegraph();
 return;
 }
-void main()
+int main()
 {
 int x[4],y[4];
 int i;
-printf("Enter the x- and y- coordinates of the four control points: \n ");
+printf("Enter the x- and y-coordinates of the four control points:\n ");
 for(i=0;i<4;i++)
 scanf("%d%d",&x[i],&y[i]);
 bezier(x,y);
+return 0;
 }
 
+//DDA THIN
+#include <stdio.h>
+#include <graphics.h>
+#include <stdlib.h>
 
-*Extra CG codes*
+int main() {
+int gdriver = DETECT, gmode;
+int i, x, y, x1, y1, x2, y2, dx, dy, length, xincr, yincr;
 
-Write a program to implement 2D transformations 
-i) Translation ii) Rotation iii) Scaling iv) Shear
+printf("Enter the starting coordinates: ");
+scanf("%d%d", &x1, &y1);
+printf("Enter the ending coordinates: ");
+scanf("%d%d", &x2, &y2);
 
-Program:
+initgraph(&gdriver, &gmode, "");
 
-#include<stdio.h>
-#include<graphics.h>
-#include<math.h>
-int x=330,y=250;
-int a[4][2]={{50,50},{100,50},{100,100},{50,100}};
-void draw(int x,int y)
-{
-setcolor(WHITE);
-line(x,y-250,x,y+250);
-line(x-330,y,x+330,y);
+dx = abs(x2 - x1);
+dy = abs(y2 - y1);
+
+if (dx > dy)
+length = dx;
+else
+length = dy;
+
+xincr = dx / length;
+yincr = dy / length;
+
+putpixel(x1, y1, 15);
+x = x1;
+y = y1;
+
+for (i = 1; i <= length; i++) {
+x = x + xincr;
+y = y + yincr;
+putpixel(x, y, 15);
 }
-void stats(int x,int y)
-{
-line(x+a[0][0],y-a[0][1],x+a[1][0],y-a[1][1]);
-line(x+a[1][0],y-a[1][1],x+a[2][0],y-a[2][1]);
-line(x+a[2][0],y-a[2][1],x+a[3][0],y-a[3][1]);
-line(x+a[3][0],y-a[3][1],x+a[0][0],y-a[0][1]);
-}
-void translate(int x,int y)
-{
-int tx,ty,xt,yt;
-cleardevice();
-printf("\nEnter translation factor (tx,ty): ");
-scanf("%d%d",&tx,&ty);
-cleardevice();
-draw(x,y); setcolor(WHITE);
-stats(x,y); xt=x+tx; yt=y+ty;
-setcolor(GREEN);
-stats(xt,yt); }
-void rotate(int x,int y) {double d,x2r,y2r,x3r,y3r,x4r,y4r;
-cleardevice();
-printf("\nEnter Angle of Rotation: ");
-scanf("%lf",&d);
-cleardevice();
-draw(x,y); setcolor(WHITE);
-stats(x,y);
-d=(d*3.14)/180;
-x2r=a[0][0]+(((a[1][0]-a[0][0])*cos(d))-((a[1][1]-a[0][1])*sin(d)));
-y2r=a[0][1]+(((a[1][0]-a[0][0])*sin(d))+((a[1][1]-a[0][1])*cos(d)));
-x3r=a[0][0]+(((a[2][0]-a[0][0])*cos(d))-((a[2][1]-a[0][1])*sin(d)));
-y3r=a[0][1]+(((a[2][0]-a[0][0])*sin(d))+((a[2][1]-a[0][1])*cos(d)));
-x4r=a[0][0]+(((a[3][0]-a[0][0])*cos(d))-((a[3][1]-a[0][1])*sin(d)));
-y4r=a[0][1]+(((a[3][0]-a[0][0])*sin(d))+((a[3][1]-a[0][1])*cos(d)));
-setcolor(GREEN); line(x+a[0][0],y-a[0][1],x+x2r,y-y2r);
-line(x+x2r,y-y2r,x+x3r,y-y3r);
-line(x+x3r,y-y3r,x+x4r,y-y4r); line(x+x4r,y-y4r,x+a[0][0],y-a[0][1]); }
-void scale(int x,int y) {
-int sx,sy; cleardevice();
-printf("\nEnter scaling factor (sx,sy): ");
-scanf("%d%d",&sx,&sy);
-cleardevice();
-draw(x,y); setcolor(WHITE);
-stats(x,y);
-setcolor(GREEN);
-line(x+a[0][0]*sx,y-a[0][1]*sy,x+a[1][0]*sx,y-a[1][1]*sy);
-line(x+a[1][0]*sx,y-a[1][1]*sy,x+a[2][0]*sx,y-a[2][1]*sy);
-line(x+a[2][0]*sx,y-a[2][1]*sy,x+a[3][0]*sx,y-a[3][1]*sy);
-line(x+a[3][0]*sx,y-a[3][1]*sy,x+a[0][0]*sx,y-a[0][1]*sy);
-}
-void reflect(int x,int y) {
-int x1,y1,ch;
-printf("\n1.About X-axis\n2.About Y-axis:\nEnter choice: ");
-scanf("%d",&ch);
-cleardevice();
-draw(x,y); setcolor(WHITE);
-stats(x,y);
-x1=-1;
-y1=1; setcolor(GREEN);
-if(ch==2) {
-line(x+a[0][0]*x1,y-a[0][1]*y1,x+a[1][0]*x1,y-a[1][1]*y1);
-line(x+a[1][0]*x1,y-a[1][1]*y1,x+a[2][0]*x1,y-a[2][1]*y1);
-line(x+a[2][0]*x1,y-a[2][1]*y1,x+a[3][0]*x1,y-a[3][1]*y1);
-line(x+a[3][0]*x1,y-a[3][1]*y1,x+a[0][0]*x1,y-a[0][1]*y1); }
-else {
-line(x-a[0][0]*x1,y+a[0][1]*y1,x-a[1][0]*x1,y+a[1][1]*y1);
-line(x-a[1][0]*x1,y+a[1][1]*y1,x-a[2][0]*x1,y+a[2][1]*y1);
-line(x-a[2][0]*x1,y+a[2][1]*y1,x-a[3][0]*x1,y+a[3][1]*y1);
-line(x-a[3][0]*x1,y+a[3][1]*y1,x-a[0][0]*x1,y+a[0][1]*y1); }}
-void shear(int x,int y) {
-int shr,sh1,sh2,shear;
-cleardevice();
-printf("\n1: Shear w.r.t X-axis\n2: Shear w.r.t Y-axis");
-printf("\nEnter choice: ");
-scanf("%d",&shear);
-printf("\nEnter shear value: ");
-scanf("%d",&shr);
-cleardevice();
-draw(x,y); setcolor(WHITE);
-stats(x,y);
-setcolor(GREEN);
-switch(shear) {
-case 1: {
-sh1=shr*a[2][1];
-sh2=shr*a[3][1];
-line(x+a[0][0],y-a[0][1],x+a[1][0],y-a[1][1]);
-line(x+a[1][0],y-a[1][1],x+a[2][0]+sh1,y-a[2][1]);
-line(x+a[2][0]+sh1,y-a[2][1],x+a[3][0]+sh2,y-a[3][1]);
-line(x+a[3][0]+sh2,y-a[3][1],x+a[0][0],y-a[0][1]);
-break;
-}
-case 2:
-{
-sh1=shr*a[1][0];
-sh2=shr*a[2][0];
-line(x+a[0][0],y-a[0][1],x+a[1][0],y-a[1][1]-sh2);
-line(x+a[1][0],y-a[1][1]-sh2,x+a[2][0],y-a[2][1]-sh2);
-line(x+a[2][0],y-a[2][1]-sh2,x+a[3][0],y-a[3][1]);
-line(x+a[3][0],y-a[3][1],x+a[0][0],y-a[0][1]);
-break;
-}
-}
-}
-void main()
-{
-int ch;
-int gd=DETECT,gm;
-initgraph(&gd,&gm,"C:\\turboc3\\bgi");
-cleardevice();
-printf("\n1: TRANSLATION \n2: ROTATION \n3: SCALING \n4: REFLECTION \n5: SHEAR");
-printf("\nEnter choice: ");
-scanf("%d",&ch);
-switch(ch)
-{
-case 1: translate(x,y);
-break;
-case 2: rotate(x,y);
-break;
-case 3: scale(x,y);
-break;
-case 4: reflect(x,y);
-break;
-case 5: shear(x,y);
-break;
-default:printf("Wrong choice");
-break;
-}
-delay(5000);
+
 closegraph();
-getch();
-restorecrtmode();
+return 0;
 }
 
-*Write a program to implement the Mid-Point circle-generating algorithm.*
-
-Program:
-
-#include<stdlib.h>
+//DDA DOTTED
 #include<graphics.h>
 #include<stdio.h>
-void pixel (int xc, int yc, int x, int y);
-void main() {
-int gd=DETECT, gm, xc, yc,r,x,y,Pk;
-printf("* Mid-Point Subdivision algorithm of circle *\n");
-printf("Enter the value of Xc\t");
-scanf("%d", &xc);
-printf("Enter the value of Yc \t");
-scanf("%d", &yc);
-printf("Enter the Radius of circle\t");
-scanf("%d", &r);
-initgraph (&gd, &gm," ");
-x = 0;
-y=r;
-Pk = 1 - r;
-pixel (xc,yc,x,y);
-while
-(x<y) { if(Pk <
-0) {
-x = x + 1;
-Pk=Pk+(2*x)+1;
-} else { 
-x=x+1;
-y=y-1;
-Pk=Pk+(2*x)-(2*y)+1;
-}
-pixel (xc,yc,x,y);
-}
-getch();
-closegraph();
-}
-void pixel (int xc, int yc,int x, int y)
-{
-putpixel(xc+x,yc+y,7);
-putpixel(xc+y,yc+x,7);
-putpixel(xc-y,yc+x,7);
-putpixel(xc-x,yc+y,7);
-putpixel(xc-x,yc-y,7);
-putpixel(xc-y,yc-x,7);
-putpixel(xc+y,yc-x,7);
-putpixel(xc+x,yc-y,7);
+int main() 
+{ 
+int gd = DETECT ,gm, i; 
+float x, y,dx,dy,steps; 
+int x0, x1, y0, y1; 
+initgraph(&gd, &gm, "C:\\TC\\BGI"); 
+setbkcolor(BLACK); 
+x0 = 100 , y0 = 200, x1 = 500, y1 = 200; 
+dx = (float)(x1 - x0); 
+dy = (float)(y1 - y0); 
+if(dx>=dy) 
+{ 
+steps = dx; 
 } 
+else
+{ 
+steps = dy; 
+} 
+dx = dx/steps; 
+dy = dy/steps; 
+x = x0; 
+y = y0; 
+i = 1; 
+while(i<= steps) { 
+if(i % 2==0) {
+putpixel(x, y, WHITE); 
+x += dx; 
+y += dy; 
+i=i+1; 
+}
+}
+getch(); 
+closegraph();
+return 0;
+}
 
-*Write a program to implement the Line clipping algorithm Cohen Sutherland / Liang Barsky*
-
-Program:
-
-#include<stdio.h>
+//DDA DASHED//
 #include<graphics.h>
+#include<stdio.h>
+int main() 
+{ 
+int gd = DETECT ,gm, i; 
+float x, y,dx,dy,steps; 
+int x0, x1, y0, y1; 
+initgraph(&gd, &gm, "C:\\TC\\BGI"); 
+setbkcolor(BLACK); 
+x0 = 100 , y0 = 200, x1 = 500, y1 = 200; 
+dx = (float)(x1 - x0); 
+dy = (float)(y1 - y0); 
+if(dx>=dy) 
+{ 
+steps = dx; 
+} 
+else
+{ 
+steps = dy; 
+} 
+dx = dx/steps; 
+dy = dy/steps; 
+x = x0; 
+y = y0; 
+i = 1; 
+while(i<= steps) { 
+if(i % 4!= 0) {
+putpixel(x, y, WHITE); 
+x += dx; 
+y += dy; 
+i=i+1; 
+}
+}
+getch(); 
+closegraph(); 
+return 0;
+}
+
+//BRESENHAM THIN//
+#include<stdio.h>
 #include<stdlib.h>
+#include<graphics.h>
 int main(void)
 {
-int x1,gm,gd=DETECT,y1,x2,y2,xwmin,ywmin,xwmax,ywmax,dx,dy,k;
-float p[4],q[4],r[4],min,max,u1,u2,xi,xii,yi,yii;
-printf("Enter the starting coordinates of the line segment: ");
+int gd=DETECT,gm;
+int i,x,y,x1,x2,y1,y2,dy,dx,length,P0;
+printf("enter the Starting Coordinates of line");
 scanf("%d%d",&x1,&y1);
-printf("Enter the ending coordinates of the line segment: ");
+printf("enter the Ending Coordinates of line");
 scanf("%d%d",&x2,&y2);
-printf("Enter the lower left corner of window boundary: ");
-scanf("%d%d",&xwmin,&ywmin);
-printf("Enter the upper right corner of the window boundary: ");
-scanf("%d%d",&xwmax,&ywmax);
-initgraph(&gd,&gm,"");
-dx=x2-x1;
-dy=y2-y1;
-line(x1,y1,x2,y2);
-rectangle(xwmin,ywmin,xwmax,ywmax);
-p[0]=-dx;
-q[0]=x1-xwmin;
-p[1]=dx;
-q[1]=xwmax-x1;
-p[2]=-dy;
-q[2]=y1-ywmin;
-p[3]=dy;
-q[3]=ywmax-y1;
-for(k=0;k<4;k++)
+initgraph(&gd,&gm," ");
+dx=abs(x2-x1);
+dy=abs(y2-y1);
+if(dx>dy)
+length=dx;
+else
+length=dy;
+putpixel(x1,y1,2);
+x=x1;
+y=y1;
+P0=2*dy-dx;
+for(i=1;i<=length;i++)
 {
-if(p[k]==0&&q[k]<0)
+if(P0<0)
 {
-printf("Line is outside the parallel clipping boundary, it is not a clipping candidate\n");
-getch();
-exit(0);
-}
-}
-for(k = 0; k < 4; k++)
-{
-r[k] = q[k] / p[k];
-printf("\nr[%d]=%f", k, r[k]);
-}
-max = 0;
-min = 1;
-for (k = 0; k < 4; k++)
-{
-if (p[k] < 0)
-{
-if (r[k] > max)
-max = r[k];
+x=x+1;
+y=y+0;
+putpixel(x,y,2);
+P0=P0+2*dy;
 }
 else
 {
-if (r[k] < min)
-min = r[k];
+x=x+1;
+y=y+1;
+putpixel(x,y,2);
+P0=P0+2*dy-dx*2;
 }
 }
-u1 = max;
-u2 = min;
-printf("\n u1=%f", u1);
-printf("\n u2=%f", u2);
-if (u1 > u2)
-{
-printf("\n Line is completely outside the window boundary");
-getch();
-closegraph();
-exit(0);
-}
-xi = x1 + (u1 * dx);
-yi = y1 + (u1 * dy);
-xii = x1 + (u2 * dx);
-yii = y1 + (u2 * dy);
-rectangle(xwmin, ywmin, xwmax, ywmax);
-setcolor(5);
-line(xi, yi, xii, yii);
 getch();
 closegraph();
 return 0;
 }
+
+
+
